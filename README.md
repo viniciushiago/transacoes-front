@@ -10,9 +10,6 @@ Aplicação web para controle financeiro pessoal, com cadastro de transações, 
 - Angular Material
 - RxJS
 - TypeScript
-- SCSS/CSS
-- Backend (ex: .NET, Node.js, etc.)
-
 ---
 
 ## 📦 Pré-requisitos
