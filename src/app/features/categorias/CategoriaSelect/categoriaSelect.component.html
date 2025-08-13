@@ -1,0 +1,13 @@
+<mat-form-field appearance="fill" class="campo">
+  <mat-label>Categoria</mat-label>
+  <mat-select
+    [(ngModel)]="categoriaSelecionada"
+    (ngModelChange)="categoriaSelecionadaChange.emit($event)"
+    [ngModelOptions]="{ standalone: true }"
+  >
+    <mat-option [value]="null" disabled>Selecione uma categoria</mat-option>
+    <mat-option *ngFor="let cat of (categorias$ | async) ?? []" [value]="cat.id">
+      {{ cat.nome }} ({{ cat.tipo === 1 ? 'RECEITA' : 'DESPESA' }})
+    </mat-option>
+  </mat-select>
+</mat-form-field>

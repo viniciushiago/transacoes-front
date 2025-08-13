@@ -1,0 +1,16 @@
+/* Reaproveita as mesmas classes do TransacaoForm */
+.input-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.input-row .mat-form-field {
+  flex: 1;
+}
+
+.input-full {
+  margin-bottom: 16px;
+}
+.full-width {
+  width: 100%;
+}

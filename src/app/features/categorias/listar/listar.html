@@ -1,0 +1,27 @@
+<h2>📋 Categorias</h2>
+
+<ul *ngIf="categorias$ | async as categorias">
+  <li *ngFor="let cat of categorias">
+    {{ cat.nome }} - {{ cat.tipo }} - {{ cat.ativo ? 'Ativo' : 'Inativo' }}
+  </li>
+</ul>
+
+
+<hr>
+
+<h3>➕ Nova Categoria</h3>
+
+<form (ngSubmit)="criarCategorias()">
+  <label>Nome:</label>
+  <input [(ngModel)]="novaCategoria.nome" name="nome" required />
+
+  <label>Tipo:</label>
+  <select [(ngModel)]="novaCategoria.tipo" name="tipo">
+    <option *ngFor="let tipo of tipos" [value]="tipo">{{ tipo }}</option>
+  </select>
+
+  <label>Ativo:</label>
+  <input type="checkbox" [(ngModel)]="novaCategoria.ativo" name="ativo" />
+
+  <button type="submit">Criar</button>
+</form>

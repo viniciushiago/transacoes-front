@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="top-bar">
+    <button
+      mat-flat-button
+      class="nova-transacao btn-acao"
+      (click)="abrirModalTransacao()"
+    >
+      Nova Transação
+    </button>
+
+    <button
+      mat-flat-button
+      class="nova-categoria btn-acao"
+      (click)="abrirModalCategoria()"
+    >
+      Criar Categoria
+    </button>
+
+    <button
+      mat-flat-button
+      class="relatorios btn-acao"
+      (click)="abrirModalRelatorios()"
+    >
+      Relatórios
+    </button>
+  </div>
+
+  <div class="tabela-container">
+    <ng-container *ngIf="transacoes$ | async as transacoes; else vazio">
+      <table class="tabela-transacoes mat-elevation-z1">
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Data</th>
+            <th>Categoria</th>
+            <th>Observações</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transacao of transacoes">
+            <td>{{ transacao.descricao }}</td>
+            <td class="texto-direita">{{ transacao.valor | currency:'BRL' }}</td>
+            <td>{{ transacao.data | date:'shortDate' }}</td>
+            <td>{{ transacao.categoriaNome }}</td>
+            <td>{{ transacao.observacoes }}</td>
+            <td class="acoes">
+              <button
+                mat-icon-button
+                color="accent"
+                (click)="abrirModalTransacao(transacao)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="excluirTransacao(transacao.id)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+
+    <ng-template #vazio>
+      <p class="mensagem-vazia">Nenhuma transação encontrada.</p>
+    </ng-template>
+  </div>
+
+</div>

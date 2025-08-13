@@ -1,0 +1,92 @@
+<!-- src/app/features/relatorios/relatorios-dialog.component.html -->
+<h2 mat-dialog-title>Relatórios</h2>
+
+<div mat-dialog-content>
+  <div class="filtros">
+    <mat-form-field appearance="fill">
+      <mat-label>Início</mat-label>
+      <input matInput type="date" [(ngModel)]="inicio" name="inicio" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fim</mat-label>
+      <input matInput type="date" [(ngModel)]="fim" name="fim" />
+    </mat-form-field>
+
+    <button mat-stroked-button color="primary" (click)="atualizar()" [disabled]="carregando || !intervaloValido">
+      {{ carregando ? 'Carregando...' : 'Atualizar' }}
+    </button>
+
+    <span class="erro" *ngIf="!intervaloValido">Intervalo inválido (início > fim)</span>
+  </div>
+
+  <mat-tab-group [selectedIndex]="aba" (selectedIndexChange)="onAbaChange($event)">
+    <!-- Aba Resumo -->
+    <mat-tab label="Resumo">
+      <div class="conteudo">
+        <div *ngIf="erro" class="erro">{{ erro }}</div>
+
+        <div *ngIf="!erro && resumo">
+          <div class="grid3">
+            <div class="card">
+              <div class="titulo">Saldo total</div>
+              <div class="valor">{{ resumo.saldoTotal | currency:'BRL':'symbol-narrow':'1.2-2' }}</div>
+            </div>
+            <div class="card positivo">
+              <div class="titulo">Total receitas</div>
+              <div class="valor">{{ resumo.totalReceitas | currency:'BRL':'symbol-narrow':'1.2-2' }}</div>
+            </div>
+            <div class="card negativo">
+              <div class="titulo">Total despesas</div>
+              <div class="valor">{{ resumo.totalDespesas | currency:'BRL':'symbol-narrow':'1.2-2' }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="!erro && !resumo && !carregando" class="placeholder">
+          Defina o período (opcional) e clique em Atualizar.
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Aba Por Categoria -->
+    <mat-tab label="Por categoria">
+      <div class="conteudo">
+        <div *ngIf="erro" class="erro">{{ erro }}</div>
+
+        <table *ngIf="!erro && porCategoria?.length" class="tabela-transacoes">
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th style="text-align:right">Receitas</th>
+              <th style="text-align:right">Despesas</th>
+              <th style="text-align:right">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of porCategoria">
+              <td>{{ item.categoriaNome }}</td>
+              <td style="text-align:right">
+                {{ item.totalReceitas | currency:'BRL':'symbol-narrow':'1.2-2' }}
+              </td>
+              <td style="text-align:right">
+                {{ item.totalDespesas | currency:'BRL':'symbol-narrow':'1.2-2' }}
+              </td>
+              <td style="text-align:right; font-weight: bold;">
+                {{ (item.totalReceitas + item.totalDespesas) | currency:'BRL':'symbol-narrow':'1.2-2' }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div *ngIf="!erro && !porCategoria?.length && !carregando" class="placeholder">
+          Sem dados para o filtro atual. Ajuste o período e clique em Atualizar.
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="fechar()">Fechar</button>
+</div>

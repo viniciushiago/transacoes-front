@@ -1,0 +1,150 @@
+.container {
+  padding: 20px;
+  background-color: #f5f5f5;
+  min-height: 100%;
+}
+
+.top-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.top-bar button {
+  background-color: #19d247 !important;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 10%;
+  min-width: 140px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.top-bar button:hover {
+  background-color: #0b6d10 !important;
+}
+
+.top-bar button mat-icon {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.tabela-container {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.tabela-transacoes {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tabela-transacoes thead th {
+  position: sticky;
+  top: 0;
+  background-color: #1976d2;
+  color: #ffffff;
+  padding: 10px;
+  text-align: left;
+  z-index: 2;
+}
+
+.tabela-transacoes td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.tabela-transacoes tr:hover {
+  background-color: #f1f1f1;
+}
+
+.acoes {
+  display: flex;
+  gap: 8px;
+}
+
+/* ✅ Centralização dos ícones nos botões */
+.acoes button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+}
+
+.acoes mat-icon {
+  font-size: 20px;
+}
+
+.btn-editar,
+.acoes button[color="accent"] {
+  background-color: #1976d2;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-editar:hover,
+.acoes button[color="accent"]:hover {
+  background-color: #145ca1;
+}
+
+.btn-excluir,
+.acoes button[color="warn"] {
+  background-color: #d32f2f;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-excluir:hover,
+.acoes button[color="warn"]:hover {
+  background-color: #9a2222;
+}
+
+.mensagem-vazia {
+  text-align: center;
+  font-style: italic;
+  color: #777777;
+  margin-top: 20px;
+}
+
+::ng-deep .modal-grande .mat-dialog-container {
+  width: 900px !important;
+  max-width: 95vw !important;
+  padding: 24px;
+}
+
+.input-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.input-row .mat-form-field {
+  flex: 1;
+}
+
+.nova-categoria {
+  margin: 0 10px 0 10px;
+}
+
+.texto-direita {
+  text-align: right;
+}
