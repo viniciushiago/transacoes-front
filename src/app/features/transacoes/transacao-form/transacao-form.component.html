@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>
+  {{ transacaoForm.id ? 'Editar Transação' : 'Nova Transação' }}
+</h2>
+
+<div mat-dialog-content>
+  <div class="input-row">
+    <mat-form-field appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <input matInput [(ngModel)]="transacaoForm.descricao" name="descricao" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Valor</mat-label>
+      <input matInput type="number" [(ngModel)]="transacaoForm.valor" name="valor" required />
+    </mat-form-field>
+  </div>
+
+  <div class="input-row">
+    <mat-form-field appearance="fill">
+      <mat-label>Data</mat-label>
+      <input matInput type="date" [(ngModel)]="transacaoForm.data" name="data" required />
+    </mat-form-field>
+
+    <app-categoria-select
+      [categorias$]="categorias$"
+      [(categoriaSelecionada)]="transacaoForm.categoriaId">
+    </app-categoria-select>
+  </div>
+
+  <div class="input-full">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Observações</mat-label>
+      <textarea
+        matInput
+        rows="3"
+        [(ngModel)]="transacaoForm.observacoes"
+        name="observacoes">
+      </textarea>
+    </mat-form-field>
+  </div>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="salvarTransacao()">
+    Salvar
+  </button>
+</div>

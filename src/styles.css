@@ -1,1 +1,100 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #a0f0e0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 900px;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.nova-transacao {
+  background-color: #38a169;
+  color: white;
+  font-weight: bold;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.nova-transacao:hover {
+  background-color: #2f855a;
+}
+
+.tabela-transacoes {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela-transacoes th,
+.tabela-transacoes td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+.acoes {
+  text-align: right;
+}
+
+
+.btn-editar,
+.btn-excluir {
+  width: 80px; /* mesmo tamanho para ambos */
+  text-align: center;
+  font-weight: bold;
+  padding: 6px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-editar {
+  background-color: #f6ad55;
+  margin-right: 6px;
+}
+
+.btn-editar:hover {
+  background-color: #dd6b20;
+}
+
+.btn-excluir {
+  background-color: #e53e3e;
+}
+
+.btn-excluir:hover {
+  background-color: #c53030;
+}
+
+
+.mensagem-vazia {
+  margin-top: 20px;
+  color: #555;
+  text-align: center;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.toast-aviso {
+  background-color: #d32f2f !important;
+  color: #fff !important;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
